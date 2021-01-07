@@ -1,14 +1,14 @@
 function app() {
-	queue()
-		.defer(d3.json, "us_states_5m.geo.json")
-		.defer(d3.csv, "us_pop.csv")
-		.awaitAll(generateMap);	
+	d3.json("us_states_5m.geo.json")
+		.then(function(geoJson) {
+			d3.csv("us_pop.csv")
+				.then(function(pop_csv) {
+					generateMap(geoJson, pop_csv);
+			});
+		});
 }
 
-function generateMap(error, results) {	
-
-	var usStates = results[0];
-	var usPop = results[1];
+function generateMap(usStates, usPop) {	
 	// The data in usStates is in alpha-order by state, as is the data in usPop.
 	// The ASSERT test below is just a sanity-check for possible corruption.
 	
@@ -32,17 +32,17 @@ function generateMap(error, results) {
 		.attr("height", height)
 		.style("border", "2px solid steelblue");
 		
-	popChgScale = d3.scale.threshold()
+	popChgScale = d3.scaleThreshold()
 						.domain([ 0.25, 0.50, 0.75, 1.0, 1.25, 1.50, 1.75, 2.0, Infinity])
 						.range(colorbrewer.Greens[9]);		
 	popChgScale.domainStrings = function() { return (['< 0.25', '0.25-0.50', '0.50-0.75', '0.75-1.0', '1.0-1.25', 
 	                                                  '1.25-1.50', '1.50-1.75', '1.75-2.0', '> 2.0']); };	
 		
-	var projection = d3.geo.albersUsa()
+	var projection = d3.geoAlbersUsa()
 		.scale(1280)
 		.translate([width / 2, height / 2]);
 
-	var geoPath = d3.geo.path()
+	var geoPath = d3.geoPath()
 		.projection(projection);
 		
 	var map = svgContainer.selectAll("path")
