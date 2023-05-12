@@ -1,7 +1,7 @@
-function app() {
-	d3.json("us_states_5m.geo.json")
+function run_demo() {
+	d3.json("../data/us_states_5m.geo.json")
 		.then(function(geoJson) {
-			d3.csv("us_pop.csv")
+			d3.csv("../data/us_pop.csv")
 				.then(function(pop_csv) {
 					generateMap(geoJson, pop_csv);
 			});

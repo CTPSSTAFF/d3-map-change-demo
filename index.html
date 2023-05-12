@@ -2,18 +2,11 @@
 <head lang="en">
 <meta charset="utf-8">
 <title>D3 Map Demo: Change Over Time</title>
-<style>
-* {
-	font-family:"Trebuchet MS","sans-serif";
-}
-.year {
-	color : red;
-}
-</style>
+<link rel="stylesheet" href="css/change.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.3.1/d3.js"></script>
 <script src="http://colorbrewer2.org/export/colorbrewer.js"></script>
-<script src="change.js"></script>
+<script src="js/change.js"></script>
 </head>
 <body>
 	<h2>
@@ -22,12 +15,12 @@
 		<span id="titleMidfix"></span>
 		<span id="toYear" class="year"></span>
 	</h2>
-	<script>
-		$(document).ready(function() {
-			app();	
-		});	
-	</script>
 	<div id="map"></div>
 	<div id="legend"></div>
+	<script>
+		$(document).ready(function() {
+			run_demo();	
+		});	
+	</script>
 </body>
 </html>
