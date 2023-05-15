@@ -48,7 +48,7 @@ each decade with respect to the previous decade.
 It uses d3's __d3.json__ and __d3.csv__ to load these two data sources, respectively.
 When both data sources have been loaded successfully, it calls the __generateViz__ function.
 
-The __generateViz_ function is organized as follows:
+The __generateViz__ function is organized as follows:
 1. Some 'sanity check' code to verify that the number of features in the geographic data is
    the same as the number of records in the CSV population data
 2. Code to create the SVG container for the map visualization, the map's projection,
