@@ -70,4 +70,19 @@ The __setSymbology__ function does the following:
   2. Were the fill color is set by calling the __popChgScale__ color scale
      defined in step \(3\) above on the population change for the
 	 state for the 'current' decade
+	 
+## Running the app
+* Clone the repository into a directory, call it 'x'
+* 'cd x'
+* python -m http.server 8888 --bind localhost
+* In a web browser:
+  * http://localhost:8888
+
+## Colophon
+Author: [Ben Krepp](mailto:bkrepp@ctps.org)  
+Address: Central Transportation Planning Staff, Boston Region Metropolitan Planning Agency  
+10 Park Plaza  
+Suite 2150  
+Boston, MA 02116  
+United States
 
